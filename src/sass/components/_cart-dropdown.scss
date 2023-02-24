@@ -15,7 +15,38 @@
   top: 5rem;
   right: 5rem;
 
+  overflow-y: scroll;
+
   @include respond(phone) {
     top: 8rem;
   }
+}
+
+.cart-dropdown-empty {
+  width: 30rem;
+  height: 23rem;
+  border-radius: 1rem;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+
+  @include respond(phone) {
+    top: 8rem;
+  }
+}
+
+.cart-text {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
 }
