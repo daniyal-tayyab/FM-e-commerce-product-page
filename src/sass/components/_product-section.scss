@@ -1,0 +1,52 @@
+.product-section {
+  padding: 10rem 6rem;
+
+  &__main {
+    display: flex;
+    height: 100%;
+
+    @include respond(phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__main__images {
+    flex: 1;
+
+    &--cover {
+      width: 80%;
+      border-radius: 1.5rem;
+
+      @include respond(phone) {
+        width: 100%;
+      }
+    }
+
+    &--thumb {
+      width: 80%;
+      display: flex;
+      margin-top: 3rem;
+
+      img {
+        width: 21.5%;
+        border-radius: 1.5rem;
+        margin-right: 2rem;
+      }
+
+      @include respond(phone) {
+        width: 100%;
+      }
+    }
+  }
+
+  &__main__content {
+    flex: 1;
+
+    background-color: antiquewhite;
+    padding: 5rem 2rem;
+
+    @include respond(phone) {
+      width: 100%;
+    }
+  }
+}
