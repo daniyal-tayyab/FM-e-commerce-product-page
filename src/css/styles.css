@@ -186,6 +186,11 @@ body {
   top: 5rem;
   right: 5rem;
 }
+@media (max-width: 37.5em) {
+  .cart-dropdown {
+    top: 8rem;
+  }
+}
 
 .cart-item {
   width: 100%;
