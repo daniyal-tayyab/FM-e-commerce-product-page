@@ -1,0 +1,13 @@
+.cart-icon {
+  position: relative;
+
+  &__item-count {
+    position: absolute;
+    top: -0.8rem;
+    right: -8px;
+    font-size: 1rem;
+    padding: 2px 5px;
+    background-color: $color-orange;
+    border-radius: 50%;
+  }
+}

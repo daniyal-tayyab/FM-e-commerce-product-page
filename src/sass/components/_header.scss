@@ -4,6 +4,7 @@
 
   display: flex;
   align-items: center;
+  position: relative;
 
   &__icon-menu {
     margin-right: 3rem;
@@ -30,6 +31,27 @@
       a {
         text-decoration: none;
         color: inherit;
+        position: relative;
+        transition: all 0.2s;
+
+        &::after {
+          content: "";
+          display: block;
+          width: 0;
+          height: 3px;
+          background-color: $color-orange;
+          position: absolute;
+          top: 4rem;
+          transition: all 0.2s;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
+
+        &:hover {
+          color: $color-very-dark-blue;
+        }
       }
     }
 
@@ -52,9 +74,15 @@
     }
 
     &__avatar {
-      height: 4rem;
+      height: 4.2rem;
       margin-left: 4rem;
       cursor: pointer;
+      border-radius: 50%;
+      transition: all 0.2s;
+
+      &:hover {
+        border: 2px solid $color-orange;
+      }
     }
   }
 

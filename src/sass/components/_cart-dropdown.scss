@@ -1,0 +1,17 @@
+.cart-dropdown {
+  width: 30rem;
+  height: 23rem;
+  border-radius: 1rem;
+  box-shadow: 0 2rem 3rem rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  position: absolute;
+  top: 5rem;
+  right: 5rem;
+}
