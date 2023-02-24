@@ -1,0 +1,64 @@
+.header {
+  width: 100%;
+  height: 5rem;
+
+  display: flex;
+  align-items: center;
+
+  &__icon-menu {
+    margin-right: 3rem;
+    margin-top: 0.5rem;
+
+    display: none;
+
+    @include respond(phone) {
+      display: block;
+      cursor: pointer;
+    }
+  }
+
+  &__logo {
+    margin-right: 5rem;
+  }
+
+  &__nav__list {
+    display: flex;
+    list-style: none;
+    color: $color-grayish-blue;
+
+    &__item {
+      a {
+        text-decoration: none;
+        color: inherit;
+      }
+    }
+
+    &__item:not(:last-child) {
+      margin-right: 3rem;
+    }
+
+    @include respond(phone) {
+      display: none;
+    }
+  }
+
+  &__right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+
+    &__cart {
+      cursor: pointer;
+    }
+
+    &__avatar {
+      height: 4rem;
+      margin-left: 4rem;
+      cursor: pointer;
+    }
+  }
+
+  @include respond(phone) {
+    padding: 4rem;
+  }
+}
