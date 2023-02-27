@@ -16,11 +16,12 @@
 
   &__main__images {
     max-width: 50%;
+    position: relative;
 
     &__cover {
       width: 80%;
       border-radius: 1.5rem;
-      position: relative;
+      cursor: pointer;
 
       @include respond(phone) {
         width: 100%;
@@ -30,7 +31,8 @@
       &--previous {
         position: absolute;
         left: 1.5rem;
-        top: 25%;
+        top: 45%;
+
         @include arrows;
         display: none;
 
@@ -42,7 +44,7 @@
       &--next {
         position: absolute;
         right: 1.5rem;
-        top: 25%;
+        top: 45%;
 
         @include arrows;
         display: none;
@@ -56,12 +58,25 @@
     &__thumb {
       width: 80%;
       display: flex;
+      align-items: baseline;
       margin-top: 3rem;
+      cursor: pointer;
+      transition: all 0.2s;
 
       img {
         width: 21.5%;
         border-radius: 1.5rem;
         margin-right: 2rem;
+
+        &:hover {
+          opacity: 0.6;
+        }
+      }
+
+      &--img-selected {
+        opacity: 0.6;
+        outline-offset: 1px;
+        outline: 2px solid $color-orange;
       }
 
       @include respond(phone) {

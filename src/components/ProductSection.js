@@ -1,10 +1,6 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import coverImage from "../images/image-product-1.jpg";
-import thumb1 from "../images/image-product-1-thumbnail.jpg";
-import thumb2 from "../images/image-product-2-thumbnail.jpg";
-import thumb3 from "../images/image-product-3-thumbnail.jpg";
-import thumb4 from "../images/image-product-4-thumbnail.jpg";
 
 import { ReactComponent as IconPlus } from "../images/icon-plus.svg";
 import { ReactComponent as IconMinus } from "../images/icon-minus.svg";
@@ -12,30 +8,93 @@ import { ReactComponent as IconPrevious } from "../images/icon-previous.svg";
 import { ReactComponent as IconNext } from "../images/icon-next.svg";
 
 import Button from "./Button";
+import LightBox from "./LightBox";
+
+import { thumbImagesArray } from "../utils/data";
 
 const ProductSection = () => {
+  const [mainImage, setMainImage] = useState(coverImage);
+  const [selected, setSelected] = useState(thumbImagesArray);
+  const [currentItemIndex, setCurrentItemIndex] = useState(0);
+  const [showLightBox, setShowLightBox] = useState(false);
+
+  const handleThumbClick = (id) => {
+    setSelected((prevState) => {
+      return prevState.map((item) => {
+        if (item.id === id) {
+          return { ...item, selected: true };
+        } else {
+          return { ...item, selected: false };
+        }
+      });
+    });
+  };
+
+  const handleImageChange = (image, id) => {
+    setMainImage(image);
+    handleThumbClick(id);
+  };
+
+  const handleNextImage = () => {
+    if (currentItemIndex < 3) {
+      setCurrentItemIndex(currentItemIndex + 1);
+    }
+  };
+
+  const handlePreviousImage = () => {
+    if (currentItemIndex > 0) {
+      setCurrentItemIndex(currentItemIndex - 1);
+    }
+  };
+
+  const toggleLightBox = () => setShowLightBox(!showLightBox);
+
   return (
     <div className="product-section">
       <div className="product-section__main">
         <div className="product-section__main__images">
           <div>
-            <img
-              className="product-section__main__images__cover"
-              src={coverImage}
-              alt="product"
-            />
-            <span className="product-section__main__images__cover--previous">
+            {window.screen.width > 600 ? (
+              <img
+                className="product-section__main__images__cover"
+                src={mainImage}
+                alt="product"
+                onClick={toggleLightBox}
+              />
+            ) : (
+              <img
+                className="product-section__main__images__cover"
+                src={selected[currentItemIndex].cover}
+                alt="product"
+                onClick={toggleLightBox}
+              />
+            )}
+
+            <span
+              className="product-section__main__images__cover--previous"
+              onClick={handlePreviousImage}
+            >
               <IconPrevious></IconPrevious>
             </span>
-            <span className="product-section__main__images__cover--next">
+            <span
+              className="product-section__main__images__cover--next"
+              onClick={handleNextImage}
+            >
               <IconNext></IconNext>
             </span>
           </div>
           <div className="product-section__main__images__thumb">
-            <img src={thumb1} alt="thumb" />
-            <img src={thumb2} alt="thumb" />
-            <img src={thumb3} alt="thumb" />
-            <img src={thumb4} alt="thumb" />
+            {selected.map(({ id, thumb, cover, selected }) => (
+              <img
+                key={id}
+                src={thumb}
+                alt="thumb"
+                onClick={() => handleImageChange(cover, id)}
+                className={`product-section__main__images__thumb${
+                  selected ? "--img-selected" : ""
+                }`}
+              />
+            ))}
           </div>
         </div>
         <div className="product-section__main__content">

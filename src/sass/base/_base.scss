@@ -34,4 +34,5 @@ body {
 
 .app {
   @include absCenter;
+  position: relative;
 }

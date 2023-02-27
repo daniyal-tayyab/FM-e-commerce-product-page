@@ -1,5 +1,5 @@
 .btn {
-  padding: 1.5rem 3rem;
+  padding: 1.5rem 7rem;
   text-align: center;
   background-color: $color-orange;
   font-size: 1.4rem;
@@ -9,6 +9,6 @@
 
   @include respond(phone) {
     min-width: 100%;
-    padding: 2rem 3rem;
+    padding: 2rem 0;
   }
 }
