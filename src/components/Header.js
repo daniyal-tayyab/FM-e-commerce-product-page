@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+
+import { CartContext } from "../contexts/CartContext";
 
 import logo from "../images/logo.svg";
 import avatar from "../images/image-avatar.png";
@@ -10,8 +12,8 @@ import CartDropDown from "./CartDropDown";
 const navList = ["Collections", "Men", "Women", "About", "Contact"];
 
 const Header = () => {
+  const { isCartOpen, setIsCartOpen } = useContext(CartContext);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
-  const [isCartOpen, setIsCartOpen] = useState(false);
 
   const toggleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen);

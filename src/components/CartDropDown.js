@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useContext } from "react";
+
+import { CartContext } from "../contexts/CartContext";
+
 import Button from "./Button";
 import CartItem from "./CartItem";
 
 const items = [1];
 
 const CartDropDown = () => {
+  const { cartItems } = useContext(CartContext);
+
   return (
-    <div className={items.length ? "cart-dropdown" : "cart-dropdown-empty"}>
-      <div className={items.length ? "" : "cart-text"}>Cart</div>
-      {items.length ? (
+    <div className={cartItems.length ? "cart-dropdown" : "cart-dropdown-empty"}>
+      <div className={cartItems.length ? "" : "cart-text"}>Cart</div>
+      {cartItems.length ? (
         <>
-          <CartItem />
+          {cartItems.map((cartItem) => (
+            <CartItem cartItem={cartItem} key={cartItem.id} />
+          ))}
           <Button>Checkout</Button>
         </>
       ) : (

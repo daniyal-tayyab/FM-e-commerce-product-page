@@ -1,7 +1,11 @@
 import React from "react";
 
-const Button = ({ children }) => {
-  return <div className="btn">{children}</div>;
+const Button = ({ children, handleAddToCart }) => {
+  return (
+    <div className="btn" onClick={handleAddToCart}>
+      {children}
+    </div>
+  );
 };
 
 export default Button;

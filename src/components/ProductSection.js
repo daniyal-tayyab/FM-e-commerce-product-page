@@ -1,4 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
+
+import { CartContext } from "../contexts/CartContext";
 
 import coverImage from "../images/image-product-1.jpg";
 
@@ -12,7 +14,15 @@ import LightBox from "./LightBox";
 
 import { thumbImagesArray } from "../utils/data";
 
+const product = {
+  id: 1,
+  image: coverImage,
+  name: "Fall limited edition Sneakers",
+  price: "125",
+};
+
 const ProductSection = () => {
+  const { addItemToCart } = useContext(CartContext);
   const [mainImage, setMainImage] = useState(coverImage);
   const [selected, setSelected] = useState(thumbImagesArray);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
@@ -48,6 +58,11 @@ const ProductSection = () => {
   };
 
   const toggleLightBox = () => setShowLightBox(!showLightBox);
+
+  const handleAddToCart = () => {
+    console.log("hehe");
+    addItemToCart(product);
+  };
 
   return (
     <div className="product-section">
@@ -128,7 +143,7 @@ const ProductSection = () => {
                 <IconPlus />
               </span>
             </div>
-            <Button>Add to cart</Button>
+            <Button handleAddToCart={handleAddToCart}>Add to cart</Button>
           </div>
         </div>
       </div>
