@@ -4,6 +4,13 @@
   align-items: center;
 }
 
+@mixin arrows {
+  padding: 2rem;
+  border-radius: 50%;
+  background-color: $color-light-grayish-blue;
+  @include absCenter;
+}
+
 // media query manager
 
 @mixin respond($breakpoint) {

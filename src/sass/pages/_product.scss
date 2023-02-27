@@ -1,14 +1,9 @@
 .product-component {
-  width: 80%;
-  height: 90vh;
-  margin: auto;
-  // background-color: #fece2f;
-
+  padding: 5rem 17rem;
   display: flex;
   flex-direction: column;
 
   @include respond(phone) {
-    width: 100%;
-    height: 100vh;
+    padding: 0;
   }
 }

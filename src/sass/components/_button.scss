@@ -6,4 +6,9 @@
   color: $color-light-grayish-blue;
   border-radius: 1rem;
   cursor: pointer;
+
+  @include respond(phone) {
+    min-width: 100%;
+    padding: 2rem 3rem;
+  }
 }

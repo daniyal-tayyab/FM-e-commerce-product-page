@@ -1,6 +1,10 @@
 .product-section {
   padding: 10rem 6rem;
 
+  @include respond(phone) {
+    padding: 0;
+  }
+
   &__main {
     display: flex;
     height: 100%;
@@ -11,18 +15,45 @@
   }
 
   &__main__images {
-    flex: 1;
+    max-width: 50%;
 
-    &--cover {
+    &__cover {
       width: 80%;
       border-radius: 1.5rem;
+      position: relative;
 
       @include respond(phone) {
         width: 100%;
+        border-radius: 0;
+      }
+
+      &--previous {
+        position: absolute;
+        left: 1.5rem;
+        top: 25%;
+        @include arrows;
+        display: none;
+
+        @include respond(phone) {
+          display: block;
+        }
+      }
+
+      &--next {
+        position: absolute;
+        right: 1.5rem;
+        top: 25%;
+
+        @include arrows;
+        display: none;
+
+        @include respond(phone) {
+          display: block;
+        }
       }
     }
 
-    &--thumb {
+    &__thumb {
       width: 80%;
       display: flex;
       margin-top: 3rem;
@@ -34,19 +65,105 @@
       }
 
       @include respond(phone) {
-        width: 100%;
+        display: none;
       }
+    }
+
+    @include respond(phone) {
+      min-width: 100%;
     }
   }
 
   &__main__content {
-    flex: 1;
+    max-width: 50%;
 
-    background-color: antiquewhite;
     padding: 5rem 2rem;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+
     @include respond(phone) {
-      width: 100%;
+      min-width: 100%;
+      padding: 5rem 4rem;
+    }
+
+    &__description {
+      width: 80%;
+      font-size: 1.5rem;
+      line-height: 1.7;
+      color: $color-grayish-blue;
+
+      @include respond(phone) {
+        width: 90%;
+        font-size: 1.7rem;
+      }
+    }
+
+    &__price-bar {
+      display: flex;
+      align-items: center;
+
+      p {
+        margin-right: 2rem;
+        font-size: 2rem;
+
+        @include respond(phone) {
+          font-size: 3rem;
+        }
+      }
+
+      span {
+        font-size: 1.3rem;
+        font-weight: 700;
+
+        @include respond(phone) {
+          font-size: 2rem;
+        }
+      }
+    }
+
+    &__old-price {
+      color: $color-grayish-blue;
+      text-decoration: line-through;
+      margin-top: 1rem;
+      font-size: 1.4rem;
+
+      @include respond(phone) {
+        font-size: 2rem;
+      }
+    }
+
+    &__cart {
+      display: flex;
+      align-items: center;
+
+      @include respond(phone) {
+        flex-direction: column;
+      }
+
+      &__counter {
+        margin-right: 3rem;
+        display: flex;
+
+        @include respond(phone) {
+          min-width: 100%;
+          text-align: center;
+          margin-right: 0;
+          justify-content: space-around;
+          margin-bottom: 2rem;
+        }
+
+        &--count {
+          font-size: 2rem;
+        }
+
+        span {
+          &:not(:last-child) {
+            margin-right: 3.5rem;
+          }
+        }
+      }
     }
   }
 }
