@@ -27,7 +27,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./e-com-product-page.png.png)
+![](./e-com-product-page.png)
 
 ### Links
 
