@@ -8,15 +8,21 @@ import CartItem from "./CartItem";
 const items = [1];
 
 const CartDropDown = () => {
-  const { cartItems } = useContext(CartContext);
+  const { cartItems, deleteItemFromCart } = useContext(CartContext);
 
   return (
-    <div className={cartItems.length ? "cart-dropdown" : "cart-dropdown-empty"}>
-      <div className={cartItems.length ? "" : "cart-text"}>Cart</div>
-      {cartItems.length ? (
+    <div
+      className={cartItems?.length ? "cart-dropdown" : "cart-dropdown-empty"}
+    >
+      <div className={cartItems?.length ? "" : "cart-text"}>Cart</div>
+      {cartItems?.length ? (
         <>
           {cartItems.map((cartItem) => (
-            <CartItem cartItem={cartItem} key={cartItem.id} />
+            <CartItem
+              cartItem={cartItem}
+              key={cartItem.id}
+              deleteItemFromCart={deleteItemFromCart}
+            />
           ))}
           <Button>Checkout</Button>
         </>

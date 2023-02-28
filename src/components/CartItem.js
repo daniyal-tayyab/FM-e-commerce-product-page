@@ -4,7 +4,7 @@ import { ReactComponent as DeleteIcon } from "../images/icon-delete.svg";
 
 import itemImage from "../images/image-product-1-thumbnail.jpg";
 
-const CartItem = ({ cartItem }) => {
+const CartItem = ({ cartItem, deleteItemFromCart }) => {
   const { price, quantity } = cartItem;
   return (
     <div className="cart-item">
@@ -16,7 +16,10 @@ const CartItem = ({ cartItem }) => {
           <span> ${(price * quantity).toFixed(2)}</span>
         </p>
       </div>
-      <DeleteIcon className="cart-item__delete" />
+      <DeleteIcon
+        className="cart-item__delete"
+        onClick={() => deleteItemFromCart(cartItem)}
+      />
     </div>
   );
 };

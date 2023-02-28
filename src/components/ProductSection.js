@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 
 import { CartContext } from "../contexts/CartContext";
 
@@ -10,7 +10,6 @@ import { ReactComponent as IconPrevious } from "../images/icon-previous.svg";
 import { ReactComponent as IconNext } from "../images/icon-next.svg";
 
 import Button from "./Button";
-import LightBox from "./LightBox";
 
 import { thumbImagesArray } from "../utils/data";
 
@@ -22,7 +21,8 @@ const product = {
 };
 
 const ProductSection = () => {
-  const { addItemToCart } = useContext(CartContext);
+  const { addItemToCart, removeItemFromCart, cartCount } =
+    useContext(CartContext);
   const [mainImage, setMainImage] = useState(coverImage);
   const [selected, setSelected] = useState(thumbImagesArray);
   const [currentItemIndex, setCurrentItemIndex] = useState(0);
@@ -134,13 +134,13 @@ const ProductSection = () => {
           <div className="product-section__main__content__cart u-mt-small">
             <div className="product-section__main__content__cart__counter">
               <span>
-                <IconMinus />
+                <IconMinus onClick={() => removeItemFromCart(product)} />
               </span>
               <span className="product-section__main__content__cart__counter--count u-bold">
-                0
+                {cartCount}
               </span>
               <span>
-                <IconPlus />
+                <IconPlus onClick={() => addItemToCart(product)} />
               </span>
             </div>
             <Button handleAddToCart={handleAddToCart}>Add to cart</Button>

@@ -482,6 +482,9 @@ body {
 .product-section__main__content__cart__counter--count {
   font-size: 2rem;
 }
+.product-section__main__content__cart__counter span {
+  cursor: pointer;
+}
 .product-section__main__content__cart__counter span:not(:last-child) {
   margin-right: 3.5rem;
 }
